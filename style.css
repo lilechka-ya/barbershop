@@ -1,0 +1,298 @@
+body {
+    background-color: #000000;
+    color: #c7c5c5;
+    font-family: Arial, sans-serif;
+}
+/*Шапка*/
+.navbar {
+    background-color: #212121;
+}
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #ffffff !important;
+}
+.navbar-nav .nav-link {
+    color: #ffffff !important;
+    margin-right: 15px;
+}
+.navbar-nav .nav-link:hover {
+    color: #c7c5c5 !important;
+}
+h2 {
+    margin: 40px 0 30px;
+    font-weight: bold;
+    text-align: center;
+    color: #c7c5c5;
+}
+/*Герой блок на главной странице*/
+.hero {
+    background: url('./img/main.jpg') no-repeat center center/cover;
+    height: 85vh;
+    display: flex;
+    align-items: center;
+    color: #fff;
+    position: relative;
+}
+.hero-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-left: 20px;
+}
+.hero-btn {
+    background-color: #580303;
+    color: #f9f3e7;
+    font-weight: bold;
+    border-radius: 10px;
+    padding: 10px 25px;
+    margin-left: 20px;
+    transition: 0.3s;
+    text-transform: uppercase;
+}
+.hero-btn:hover {
+    background-color:#3f0202;
+    color: #fff;
+}
+/*Спецпредложения на главной странице*/
+.specials {
+    position: relative;
+    top: -80px;
+}
+.special-card {
+    background-color: #212121;
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    padding: 40px 20px;
+    text-align: center;
+    font-weight: bold;
+    transition: 0.3s;
+}
+.special-card i {
+    font-size: 40px;
+    margin-bottom: 15px;
+    color: #ffffff;
+}
+.special-card:hover {
+    background-color: #525252;
+    color: #580303;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+.special-card:hover i {
+    color: #580303;
+}
+/*Почему мы*/
+.why-us i {
+    font-size: 40px;
+    color: #580303;
+    margin-bottom: 10px;
+}
+/*Отзывы*/
+.review {
+    border-radius: 10px;
+    border: solid #212121 2px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+.review h5 {
+    font-weight: bold;
+    color: #c7c5c5;
+}
+.review p {
+    margin-bottom: 0;
+}
+.review img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+/*Форма отзывов*/
+.review-input {
+    border-radius: 10px;
+    border: 2px solid #212121;
+    padding: 10px 15px;
+    transition: 0.3s;
+    background-color: #000000;
+    color: #ffffff;
+}
+.review-input:focus {
+    border-color: #525252;
+    background-color: #212121;
+    color: #e0e0e0;
+    box-shadow: 0 0 10px rgba(134, 134, 134, 0.4);
+    outline: none;
+}
+.review-input::placeholder {
+    color: #525252;
+    opacity: 1;
+}
+
+.review-input:focus::placeholder {
+    color: #c7c5c5;
+    opacity: 1;
+}
+.review-btn {
+    background-color: #580303;
+    color: #f9f3e7;
+    font-weight: bold;
+    border-radius: 10px;
+    padding: 10px 25px;
+    transition: 0.3s;
+}
+.review-btn:hover {
+    background-color: #3f0202;
+    color: #fff;
+}
+/* Карточки услуг */
+.service-card {
+    background-color: #212121;
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+    color: #c7c5c5;
+}
+.service-card img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    display: block;
+}
+.service-card .card-body {
+    text-align: left;
+}
+.service-card .btn {
+    background-color: #580303;
+    color: #f9f3e7;
+    border: none;
+    border-radius: 8px;
+    margin-top: 10px;
+    display: block;
+    font-weight: bold;
+    margin-left: auto;
+    margin-right: auto;
+}
+.service-card .btn:hover {
+    background-color: #3f0202;
+    color: #ffffff;
+}
+/*Карточки мастеров*/
+.master-card {
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+}
+.master-card img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    display: block;
+}
+.master-overlay {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
+    color: #fff;
+    padding: 15px;
+}
+.master-overlay h5 {
+    font-weight: bold;
+}
+.master-overlay span {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+.btn-red {
+    background-color: #580303;
+    color: #f9f3e7;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    padding: 10px;
+    transition: 0.3s;
+}
+.btn-red:hover {
+    background-color: #3f0202;
+    color: #fff;
+}
+/*Поля формы записи*/
+.form-control, .form-select {
+    border-radius: 10px;
+    background-color: #000000;
+    border: 2px solid #212121;
+    color: #525252;
+    height: 50px;
+    font-size: 1rem;
+}
+.form-control:focus, .form-select:focus {
+    border-color: #525252;
+    background-color: #212121;
+    box-shadow: 0 0 10px rgba(134, 134, 134, 0.4);
+    outline: none;
+}
+.input-group-text {
+    background-color: #000000;
+    border: 2px solid #212121;
+    color: #525252;
+    border-radius: 12px 0 0 12px;
+}
+/*Кастомный select с фото*/
+.custom-select-wrapper {
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #000000;
+    border: 2px solid #212121;
+    margin-bottom: 1rem;
+}
+.custom-select-wrapper img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 10px;
+}
+.custom-select-wrapper .form-select {
+    border: none;
+    border-radius: 0;
+    background-color: #000000;
+    color: #525252;
+    flex: 1;
+    height: 50px;
+    font-size: 1rem;
+}
+.custom-select-wrapper .form-select:focus {
+    box-shadow: none;
+    border: none;
+    outline: 1px solid #525252;
+}
+/*Фото справа*/
+.side-img {
+    width: 100%;
+    max-width: 450px;
+    border-radius: 12px;
+    margin-left: 60px;
+    margin-bottom: 20px;
+}
+/* Подвал */
+footer {
+    background-color: #212121;
+    color: #f9f3e7;
+    padding: 20px 0;
+}
+.footer-logo {
+    display: flex;
+    align-items: center;
+}
+footer a {
+    color: #f9f3e7;
+    font-size: 1.5rem;
+    margin: 0 8px;
+    transition: 0.3s;
+}
+footer a:hover {
+    color: #cbcbcb;
+}

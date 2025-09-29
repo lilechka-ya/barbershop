@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Онлайн запись | ПапинБарбер</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Шапка -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="./">
+        ПапинБарбер
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="./index.html">Главная</a></li>
+          <li class="nav-item"><a class="nav-link" href="./services.html">Услуги</a></li>
+          <li class="nav-item"><a class="nav-link" href="./masters.html">Мастера</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Онлайн запись</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Онлайн запись -->
+  <section class="container my-5">
+    <h2>ЗАПИШИСЬ НА УСЛУГУ ПРЯМО СЕЙЧАС</h2>
+    <div class="row">
+      <!-- Левая колонка с формой -->
+      <div class="col-md-6">
+        
+        <!-- Выбор услуги -->
+        <div class="custom-select-wrapper">
+          <img src="./img/service_one.jpg" alt="услуга">
+          <select class="form-select" id="serviceSelect" onchange="updatePrice()">
+            <option value="" data-price="0">Услуга</option>
+            <option value="Мужская стрижка" data-price="1200">Мужская стрижка</option>
+            <option value="Стрижка бороды" data-price="800">Стрижка бороды</option>
+            <option value="Королевское бритьё" data-price="1500">Королевское бритьё</option>
+          </select>
+        </div>
+
+        <!-- Выбор мастера -->
+        <div class="custom-select-wrapper">
+          <img src="./img/master_one.jpg" alt="мастер">
+          <select class="form-select" id="masterSelect">
+            <option value="">Мастер</option>
+            <option value="Иван">Иван</option>
+            <option value="Мария">Мария</option>
+            <option value="Алексей">Алексей</option>
+          </select>
+        </div>
+
+        <!-- Имя -->
+        <div class="input-group mb-3">
+          <span class="input-group-text"><i class="bi bi-person"></i></span>
+          <input type="text" class="form-control review-input" placeholder="Ваше имя">
+        </div>
+
+        <!-- Телефон -->
+        <div class="input-group mb-3">
+          <span class="input-group-text"><i class="bi bi-telephone"></i></span>
+          <input type="tel" class="form-control review-input" placeholder="Номер телефона">
+        </div>
+
+        <!-- Дата -->
+        <div class="input-group mb-3">
+          <span class="input-group-text"><i class="bi bi-calendar"></i></span>
+          <input type="date" class="form-control">
+        </div>
+
+        <!-- Время -->
+        <div class="input-group mb-3">
+          <span class="input-group-text"><i class="bi bi-clock"></i></span>
+          <input type="time" class="form-control">
+        </div>
+
+        <!-- Стоимость и кнопка -->
+        <div class="d-flex justify-content-between align-items-center mt-3">
+          <p class="fw-bold mb-0">Стоимость услуги: <span id="servicePrice">0</span> ₽</p>
+          <button class="btn btn-red">ЗАПИСАТЬСЯ</button>
+        </div>
+      </div>
+
+      <!-- Правая колонка с фото -->
+      <div class="col-md-6 d-flex flex-column align-items-center justify-content-start">
+        <img src="./img/aesthetics.jpg" alt="Барбершоп" class="side-img">
+        <img src="./img/tools.jpg" alt="Барбершоп" class="side-img">
+      </div>
+    </div>
+  </section>
+
+  <!-- Карта -->
+  <section class="container my-5">
+    <h2>МЫ НА КАРТЕ</h2>
+    <div style="position:relative;overflow:hidden;border-radius:12px;">
+      <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Aexample&id=example" width="100%" height="400" frameborder="0"></iframe>
+    </div>
+  </section>
+
+  <!-- Подвал -->
+  <footer>
+    <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
+      <span>ПапинБарбер</span>
+      <div>
+        <a href="#"><i class="bi bi-telegram"></i></a>
+        <a href="#"><i class="bi bi-vk"></i></a>
+        <a href="#"><i class="bi bi-instagram"></i></a>
+      </div>
+    </div>
+    <div class="text-center mt-3">
+      <p>© ПапинБарбер, 2025 | Все права защищены</p>
+      <p>8 (800) 123-45-67 | info@barbershop.ru</p>
+    </div>
+  </footer>
+
+  <script>
+    function updatePrice() {
+      const select = document.getElementById("serviceSelect");
+      const price = select.options[select.selectedIndex].dataset.price;
+      document.getElementById("servicePrice").textContent = price;
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
