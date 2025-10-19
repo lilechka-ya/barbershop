@@ -9,130 +9,134 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <!-- Шапка -->
-    <nav class="navbar navbar-expand-lg">
-    <div class="container">
-        <a class="navbar-brand d-flex align-items-center" href="./">
-        ПапинБарбер
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <img src="img/logo.png" alt="ПапинБарбер Логотип">
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-            <li class="nav-item"><a class="nav-link" href="./index.html">Главная</a></li>
-            <li class="nav-item"><a class="nav-link" href="./services.html">Услуги</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Мастера</a></li>
-            <li class="nav-item"><a class="nav-link" href="./online.html">Онлайн запись</a></li>
-        </ul>
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="index.html">Главная</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="masters.html">Мастера</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="services.html">Услуги</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="online.html">Онлайн-запись</a>
+            </li>
+          </ul>
         </div>
-    </div>
+      </div>
     </nav>
+  </header>
 
-    <!-- Наши мастера -->
+  <main>
     <section class="container my-5">
       <h2>НАШИ МАСТЕРА</h2>
       <div class="row g-4">
-
-        <!-- Карточка мастера -->
         <div class="col-md-4">
           <div class="master-card position-relative">
             <img src="./img/master_one.jpg" alt="Мария" class="w-100">
             <div class="master-overlay">
               <div class="d-flex justify-content-between align-items-center w-100 px-3">
-                <h5 class="mb-0">Мария</h5>
-                <span>Старший барбер</span>
+                <h4 class="mb-0">Мария</h4>
+                <span>старший барбер</span>
               </div>
               <a href="./online.html" class="btn btn-red w-100 mt-2">ЗАПИСАТЬСЯ</a>
             </div>
           </div>
         </div>
-
         <div class="col-md-4">
           <div class="master-card position-relative">
             <img src="./img/master_two.jpg" alt="Алексей" class="w-100">
             <div class="master-overlay">
               <div class="d-flex justify-content-between align-items-center w-100 px-3">
-                <h5 class="mb-0">Алексей</h5>
-                <span>Старший барбер</span>
+                <h4 class="mb-0">Алексей</h4>
+                <span>старший барбер</span>
               </div>
               <a href="./online.html" class="btn btn-red w-100 mt-2">ЗАПИСАТЬСЯ</a>
             </div>
           </div>
         </div>
-
         <div class="col-md-4">
           <div class="master-card position-relative">
             <img src="./img/master_three.jpg" alt="Анастасия" class="w-100">
             <div class="master-overlay">
               <div class="d-flex justify-content-between align-items-center w-100 px-3">
-                <h5 class="mb-0">Анастасия</h5>
-                <span>Детский барбер</span>
+                <h4 class="mb-0">Анастасия</h4>
+                <span>детский барбер</span>
               </div>
               <a href="./online.html" class="btn btn-red w-100 mt-2">ЗАПИСАТЬСЯ</a>
             </div>
           </div>
         </div>
-
-        <!-- Вторая строка -->
         <div class="col-md-4">
           <div class="master-card position-relative">
             <img src="./img/master_four.jpg" alt="Сергей" class="w-100">
             <div class="master-overlay">
               <div class="d-flex justify-content-between align-items-center w-100 px-3">
-                <h5 class="mb-0">Сергей</h5>
-                <span>Барбер</span>
+                <h4 class="mb-0">Сергей</h4>
+                <span>барбер</span>
               </div>
               <a href="./online.html" class="btn btn-red w-100 mt-2">ЗАПИСАТЬСЯ</a>
             </div>
           </div>
         </div>
-
         <div class="col-md-4">
           <div class="master-card position-relative">
             <img src="./img/master_five.jpg" alt="Антон" class="w-100">
             <div class="master-overlay">
               <div class="d-flex justify-content-between align-items-center w-100 px-3">
-                <h5 class="mb-0">Антон</h5>
-                <span>Барбер</span>
+                <h4 class="mb-0">Антон</h4>
+                <span>барбер</span>
               </div>
               <a href="./online.html" class="btn btn-red w-100 mt-2">ЗАПИСАТЬСЯ</a>
             </div>
           </div>
         </div>
-
         <div class="col-md-4">
           <div class="master-card position-relative">
             <img src="./img/master_six.jpg" alt="Олег" class="w-100">
             <div class="master-overlay">
               <div class="d-flex justify-content-between align-items-center w-100 px-3">
-                <h5 class="mb-0">Олег</h5>
-                <span>Барбер</span>
+                <h4 class="mb-0">Олег</h4>
+                <span>барбер</span>
               </div>
               <a href="./online.html" class="btn btn-red w-100 mt-2">ЗАПИСАТЬСЯ</a>
             </div>
           </div>
         </div>
-
       </div>
     </section>
+  </main>
 
-    <!-- Подвал -->
-    <footer>
-        <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
-        <span>ПапинБарбер</span>
-        <div>
-            <a href="#"><i class="bi bi-telegram"></i></a>
-            <a href="#"><i class="bi bi-vk"></i></a>
-            <a href="#"><i class="bi bi-instagram"></i></a>
-        </div>
-        </div>
-        <div class="text-center mt-3">
+  <footer>
+    <div class="footer-container">
+      <div class="footer-logo">
+        <a href="#">
+          <img src="img/logo.png" alt="ПапинБарбер Логотип">
+        </a>
+      </div>
+      <div class="text-center">
         <p>© ПапинБарбер, 2025 | Все права защищены</p>
-        <p>8 (800) 123-45-67 | info@barbershop.ru</p>
-        </div>
-    </footer>
+        <p>8 (800) 123-45-67 | <a href="#" class="email-link">papinBarber@mail.ru</a></p>
+      </div>
+      <div class="social-icons">
+        <a href="#" aria-label="Telegram"><i class="bi bi-telegram"></i></a>
+        <a href="#" aria-label="VK"><i class="bi bi-vk"></i></a>
+        <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+      </div>
+    </div>
+  </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
