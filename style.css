@@ -192,6 +192,11 @@ h2 {
     border-radius: 12px;
     overflow: hidden;
     color: #c7c5c5;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 20px rgba(212, 212, 212, 0.2);
 }
 .service-card img {
     width: 100%;
@@ -222,6 +227,11 @@ h2 {
     border-radius: 12px;
     overflow: hidden;
     position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.master-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 20px rgba(212, 212, 212, 0.2);
 }
 .master-card img {
     width: 100%;
