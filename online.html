@@ -43,52 +43,133 @@
       <h2>ЗАПИШИСЬ НА УСЛУГУ ПРЯМО СЕЙЧАС</h2>
       <div class="row">
         <div class="col-md-6">
-          <form id="booking-form">
-            <div class="custom-select-wrapper mb-3">
-              <img src="./img/service_one.jpg" alt="Услуга">
-              <select class="form-select" id="serviceSelect" onchange="updatePrice()" required>
-                <option value="" data-price="0" disabled selected>Выберите услугу</option>
-                <option value="Мужская стрижка" data-price="1200">Мужская стрижка</option>
-                <option value="Стрижка бороды" data-price="800">Стрижка бороды</option>
-                <option value="Королевское бритьё" data-price="1500">Королевское бритьё</option>
-                <option value="Камуфляж седины" data-price="1000">Камуфляж седины</option>
-                <option value="Детская стрижка" data-price="900">Детская стрижка</option>
-                <option value="Комплекс: стрижка + борода" data-price="1800">Комплекс: стрижка + борода</option>
-              </select>
-            </div>
-            <div class="custom-select-wrapper mb-3">
-              <img src="./img/master_one.jpg" alt="Мастер">
-              <select class="form-select" id="masterSelect" required>
-                <option value="" disabled selected>Выберите мастера</option>
-                <option value="Мария">Мария</option>
-                <option value="Алексей">Алексей</option>
-                <option value="Анастасия">Анастасия</option>
-                <option value="Сергей">Сергей</option>
-                <option value="Антон">Антон</option>
-                <option value="Олег">Олег</option>
-              </select>
-            </div>
-            <div class="input-group mb-3">
-              <span class="input-group-text"><i class="bi bi-person"></i></span>
-              <input type="text" class="form-control" id="client-name" placeholder="Ваше имя" required>
-            </div>
-            <div class="input-group mb-3">
-              <span class="input-group-text"><i class="bi bi-telephone"></i></span>
-              <input type="tel" class="form-control" id="client-phone" placeholder="Номер телефона" pattern="[0-9]{10,}" required>
-            </div>
-            <div class="input-group mb-3">
-              <span class="input-group-text"><i class="bi bi-calendar"></i></span>
-              <input type="date" class="form-control" id="booking-date" required>
-            </div>
-            <div class="input-group mb-3">
-              <span class="input-group-text"><i class="bi bi-clock"></i></span>
-              <input type="time" class="form-control" id="booking-time" required>
-            </div>
-            <div class="d-flex justify-content-between align-items-center mt-3">
-              <p class="fw-bold mb-0">Стоимость услуги: <span id="servicePrice">0</span> ₽</p>
-              <button type="submit" class="btn btn-red">ЗАПИСАТЬСЯ</button>
-            </div>
-          </form>
+          <div x-data="bookingData()" x-init="init">
+            <form @submit.prevent="submitBooking">
+              <!-- === УСЛУГА === -->
+              <div class="custom-select-wrapper mb-3">
+                <div class="position-relative" style="width: 100px; height: 100px; margin: 10px;">
+                  <img src="./img/service_one.jpg"   x-show="service === 'Мужская стрижка'"   class="w-100 h-100 rounded-circle object-fit-cover position-absolute">
+                  <img src="./img/service_two.jpg"   x-show="service === 'Стрижка бороды'"    class="w-100 h-100 rounded-circle object-fit-cover position-absolute">
+                  <img src="./img/service_three.jpg" x-show="service === 'Королевское бритьё'" class="w-100 h-100 rounded-circle object-fit-cover position-absolute">
+                  <img src="./img/service_four.jpg"  x-show="service === 'Камуфляж седины'"   class="w-100 h-100 rounded-circle object-fit-cover position-absolute">
+                  <img src="./img/service_five.jpg"  x-show="service === 'Детская стрижка'"   class="w-100 h-100 rounded-circle object-fit-cover position-absolute">
+                  <img src="./img/service_six.jpg"   x-show="service === 'Комплекс: стрижка + борода'" class="w-100 h-100 rounded-circle object-fit-cover position-absolute">
+                  <img src="./img/service_one.jpg"   x-show="!service" class="w-100 h-100 rounded-circle object-fit-cover position-absolute">
+                </div>
+                <select class="form-select" x-model="service" @change="updatePrice" required>
+                  <option value="" disabled selected>Выберите услугу</option>
+                  <option value="Мужская стрижка">Мужская стрижка</option>
+                  <option value="Стрижка бороды">Стрижка бороды</option>
+                  <option value="Королевское бритьё">Королевское бритьё</option>
+                  <option value="Камуфляж седины">Камуфляж седины</option>
+                  <option value="Детская стрижка">Детская стрижка</option>
+                  <option value="Комплекс: стрижка + борода">Комплекс: стрижка + борода</option>
+                </select>
+              </div>
+
+              <!-- === МАСТЕР === -->
+              <div class="custom-select-wrapper mb-3">
+                <div class="position-relative" style="width: 100px; height: 100px; margin: 10px;">
+                  <img src="./img/master_one.jpg"   x-show="master === 'Мария'"      class="w-100 h-100 rounded-circle object-fit-cover position-absolute">
+                  <img src="./img/master_two.jpg"   x-show="master === 'Алексей'"    class="w-100 h-100 rounded-circle object-fit-cover position-absolute">
+                  <img src="./img/master_three.jpg" x-show="master === 'Анастасия'"  class="w-100 h-100 rounded-circle object-fit-cover position-absolute">
+                  <img src="./img/master_four.jpg"  x-show="master === 'Сергей'"     class="w-100 h-100 rounded-circle object-fit-cover position-absolute">
+                  <img src="./img/master_five.jpg"  x-show="master === 'Антон'"      class="w-100 h-100 rounded-circle object-fit-cover position-absolute">
+                  <img src="./img/master_six.jpg"   x-show="master === 'Олег'"       class="w-100 h-100 rounded-circle object-fit-cover position-absolute">
+                  <img src="./img/master_one.jpg"   x-show="!master" class="w-100 h-100 rounded-circle object-fit-cover position-absolute">
+                </div>
+                <select class="form-select" x-model="master" required>
+                  <option value="" disabled selected>Выберите мастера</option>
+                  <option value="Мария">Мария</option>
+                  <option value="Алексей">Алексей</option>
+                  <option value="Анастасия">Анастасия</option>
+                  <option value="Сергей">Сергей</option>
+                  <option value="Антон">Антон</option>
+                  <option value="Олег">Олег</option>
+                </select>
+              </div>
+
+              <!-- === ИМЯ (только кириллица) === -->
+              <div class="mb-3">
+                <div class="input-group">
+                  <span class="input-group-text"><i class="bi bi-person"></i></span>
+                  <input 
+                    type="text" 
+                    class="form-control" 
+                    x-model="name" 
+                    @input="validateName" 
+                    placeholder="Ваше имя" 
+                    required
+                  >
+                </div>
+                <div x-show="nameError" x-transition class="text-danger small mt-1">
+                  Только кириллица, без пробелов
+                </div>
+              </div>
+
+              <!-- === ТЕЛЕФОН (+7 XXX XXX XX XX) === -->
+              <div class="mb-3">
+                <div class="input-group">
+                  <span class="input-group-text"><i class="bi bi-telephone"></i></span>
+                  <input 
+                    type="text" 
+                    class="form-control" 
+                    x-model="phone" 
+                    @input="formatPhone" 
+                    placeholder="+7 ___ ___ __ __" 
+                    maxlength="16"
+                    required
+                  >
+                </div>
+                <div x-show="phoneError" x-transition class="text-danger small mt-1">
+                  Формат: +7 999 123 45 67
+                </div>
+              </div>
+
+              <!-- === ДАТА (не раньше сегодня) === -->
+              <div class="mb-3">
+                <div class="input-group">
+                  <span class="input-group-text"><i class="bi bi-calendar"></i></span>
+                  <input 
+                    type="date" 
+                    class="form-control" 
+                    x-model="date" 
+                    :min="today" 
+                    required
+                  >
+                </div>
+              </div>
+
+              <!-- === ВРЕМЯ (9:00 – 19:00) === -->
+              <div class="mb-3">
+                <div class="input-group">
+                  <span class="input-group-text"><i class="bi bi-clock"></i></span>
+                  <input 
+                    type="time" 
+                    class="form-control" 
+                    x-model="time" 
+                    min="09:00" 
+                    max="19:00" 
+                    @change="validateTime"
+                    required
+                  >
+                </div>
+                <div x-show="timeError" x-transition class="text-danger small mt-1">
+                  Время: с 9:00 до 19:00
+                </div>
+              </div>
+
+              <!-- === ЦЕНА + КНОПКА === -->
+              <div class="d-flex justify-content-between align-items-center mt-3">
+                <p class="fw-bold mb-0">Стоимость услуги: <span x-text="price"></span> ₽</p>
+                <button 
+                  type="submit" 
+                  class="btn btn-red"
+                  :disabled="!isFormValid"
+                >ЗАПИСАТЬСЯ</button>
+              </div>
+            </form>
+          </div>
         </div>
         <div class="col-md-6 d-flex flex-column align-items-center justify-content-start">
           <img src="./img/aesthetics.jpg" alt="Барбершоп" class="side-img">
@@ -124,7 +205,95 @@
     </div>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="booking.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+  <script>
+  function bookingData() {
+    return {
+      service: '',
+      master: '',
+      name: '',
+      phone: '',
+      date: '',
+      time: '',
+      price: '0',
+      today: new Date().toISOString().split('T')[0],
+
+      nameError: false,
+      phoneError: false,
+      timeError: false,
+
+      init() {
+        this.formatPhone();
+      },
+
+      updatePrice() {
+        const prices = {
+          'Мужская стрижка': 1200,
+          'Стрижка бороды': 800,
+          'Королевское бритьё': 1500,
+          'Камуфляж седины': 1000,
+          'Детская стрижка': 900,
+          'Комплекс: стрижка + борода': 1800
+        };
+        this.price = prices[this.service] || '0';
+      },
+
+      validateName() {
+        const regex = /^[а-яА-ЯёЁ]+$/;
+        this.nameError = this.name && !regex.test(this.name);
+      },
+
+      formatPhone() {
+        let value = this.phone.replace(/\D/g, '');
+        if (value.startsWith('7')) value = value.slice(1);
+        if (value.startsWith('8')) value = value.slice(1);
+        if (value.length > 10) value = value.slice(0, 10);
+
+        if (value) {
+          value = value.replace(/(\d{3})(\d{3})(\d{2})(\d{2})/, '$1 $2 $3 $4');
+          this.phone = '+7 ' + value;
+        } else {
+          this.phone = '';
+        }
+
+        this.phoneError = this.phone.length > 0 && this.phone.length !== 16;
+      },
+
+      validateTime() {
+        this.timeError = this.time && (this.time < '09:00' || this.time > '19:00');
+      },
+
+      get isFormValid() {
+        return this.service &&
+               this.master &&
+               this.name && !this.nameError &&
+               this.phone && !this.phoneError &&
+               this.date &&
+               this.time && !this.timeError;
+      },
+
+      submitBooking() {
+        if (this.isFormValid) {
+          const bookings = JSON.parse(localStorage.getItem('bookings') || '[]');
+          bookings.push({
+            service: this.service,
+            master: this.master,
+            name: this.name,
+            phone: this.phone,
+            date: this.date,
+            time: this.time,
+            price: this.price
+          });
+          localStorage.setItem('bookings', JSON.stringify(bookings));
+          alert('Запись успешно сохранена!');
+          this.service = ''; this.master = ''; this.name = ''; this.phone = ''; this.date = ''; this.time = '';
+          this.price = '0';
+        }
+      }
+    };
+  }
+  </script>
 </body>
 </html>

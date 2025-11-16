@@ -93,26 +93,42 @@
 
     <section class="reviews container my-5">
       <h2 class="text-center mb-4">ОТЗЫВЫ НАШИХ КЛИЕНТОВ</h2>
-      <div id="reviews-list">
-        <!-- Отзывы будут добавляться динамически -->
-      </div>
 
-      <div class="mt-5">
-        <h4 class="mb-3">Оставить отзыв</h4>
-        <form id="review-form">
-          <div class="mb-3">
-            <label for="review-name" class="form-label">Ваше имя</label>
-            <input type="text" class="form-control review-input" id="review-name" placeholder="Введите ваше имя" required>
+      <div id="reviews-section" x-data="reviewsData()" x-init="loadReviews()">
+        <div id="reviews-list">
+          <template x-for="(review, index) in allReviews" :key="index">
+            <div class="review d-flex mb-3" :class="{ 'position-relative': index >= staticReviews.length }">
+              <img :src="review.avatar" class="rounded-circle me-3" alt="Аватар" style="width: 80px; height: 80px;">
+              <div class="flex-grow-1">
+                <h5 x-text="review.name"></h5>
+                <p x-text="review.text"></p>
+              </div>
+              <template x-if="index >= staticReviews.length">
+                <button @click="deleteReview(index)" class="btn btn-danger btn-sm delete-btn">Удалить</button>
+              </template>
+            </div>
+          </template>
+          <div x-show="allReviews.length === 0">
+            <p>Нет отзывов.</p>
           </div>
-          <div class="mb-3">
-            <label for="review-text" class="form-label">Ваш отзыв</label>
-            <textarea class="form-control review-input" id="review-text" rows="4" placeholder="Напишите ваш отзыв" required></textarea>
-          </div>
-          <button type="submit" class="btn review-btn">Отправить</button>
-        </form>
+        </div>
+
+        <div class="mt-5">
+          <h4 class="mb-3">Оставить отзыв</h4>
+          <form @submit.prevent="addReview">
+            <div class="mb-3">
+              <label for="review-name" class="form-label">Ваше имя</label>
+              <input type="text" x-model="newName" class="form-control review-input" id="review-name" placeholder="Введите ваше имя" required>
+            </div>
+            <div class="mb-3">
+              <label for="review-text" class="form-label">Ваш отзыв</label>
+              <textarea x-model="newText" class="form-control review-input" id="review-text" rows="4" placeholder="Напишите ваш отзыв" required></textarea>
+            </div>
+            <button type="submit" class="btn review-btn">Отправить</button>
+          </form>
+        </div>
       </div>
     </section>
-
   </main>
 
   <footer>
@@ -134,7 +150,51 @@
     </div>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="reviews.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+  <script>
+  function reviewsData() {
+    const staticReviews = [
+      { name: "Иван Петров", text: "Очень понравилось обслуживание, мастера знают свое дело!", avatar: "./img/men_one.jpg" },
+      { name: "Сергей Иванов", text: "Крутая атмосфера, рекомендую всем друзьям!", avatar: "./img/men_two.jpg" },
+      { name: "Дмитрий Сидоров", text: "Хожу сюда постоянно, всегда ухожу довольным!", avatar: "./img/men_three.jpg" }
+    ];
+
+    return {
+      staticReviews,
+      newName: '',
+      newText: '',
+      allReviews: [],
+
+      loadReviews() {
+        const stored = JSON.parse(localStorage.getItem('reviews') || '[]');
+        this.allReviews = [...this.staticReviews, ...stored];
+      },
+
+      addReview() {
+        if (this.newName.trim() && this.newText.trim()) {
+          const stored = JSON.parse(localStorage.getItem('reviews') || '[]');
+          stored.push({ name: this.newName, text: this.newText, avatar: "./img/default-avatar.png" });
+          localStorage.setItem('reviews', JSON.stringify(stored));
+          this.newName = '';
+          this.newText = '';
+          this.loadReviews();
+          alert('Отзыв успешно добавлен!');
+        }
+      },
+
+      deleteReview(index) {
+        if (index >= this.staticReviews.length) {
+          const stored = JSON.parse(localStorage.getItem('reviews') || '[]');
+          stored.splice(index - this.staticReviews.length, 1);
+          localStorage.setItem('reviews', JSON.stringify(stored));
+          this.loadReviews();
+          alert('Отзыв успешно удален!');
+        }
+      }
+    };
+  }
+  </script>
 </body>
 </html>

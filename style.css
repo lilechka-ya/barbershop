@@ -273,7 +273,7 @@ h2 {
 }
 /*Поля формы записи*/
 .form-control, .form-select {
-    border-radius: 10px;
+    border-radius: 0px 10px 10px 0px !important;
     background-color: #000000;
     border: 2px solid #404040; 
     color: #b0b0b0 !important; 
@@ -315,14 +315,6 @@ h2 {
     background-color: #000000;
     border: 2px solid #404040; 
     margin-bottom: 1rem;
-}
-
-.custom-select-wrapper img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin: 10px;
 }
 
 .custom-select-wrapper .form-select {
